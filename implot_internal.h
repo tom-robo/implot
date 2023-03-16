@@ -1521,13 +1521,13 @@ static inline void CalculateBins(const T* values, int count, ImPlotBin meth, con
             bins_out  = (int)ceil(sqrt(count));
             break;
         case ImPlotBin_Sturges:
-            bins_out  = (int)ceil(1.0 + log2(count));
+            bins_out  = (int)ceil(1.0 + log2((float)count));
             break;
         case ImPlotBin_Rice:
-            bins_out  = (int)ceil(2 * cbrt(count));
+            bins_out  = (int)ceil(2 * cbrt((float)count));
             break;
         case ImPlotBin_Scott:
-            width_out = 3.49 * ImStdDev(values, count) / cbrt(count);
+            width_out = 3.49 * ImStdDev(values, count) / cbrt((float)count);
             bins_out  = (int)round(range.Size() / width_out);
             break;
     }
